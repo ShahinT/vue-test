@@ -1,5 +1,5 @@
 <template>
-  <div class="pl-4 mt-4">
+  <div class="pl-4 mt-2">
     <ButtonComponent type="button" :on-click="addUser">
       Add User
     </ButtonComponent>
@@ -30,8 +30,16 @@ export default {
 
       const requiredFields = ['firstName', 'lastName', 'birthDate', 'quote'];
       for (const field of requiredFields) {
+        if(field === "birthDate"){
+          const birthDate = new Date(this.user.birthDate);
+          const currentDate = new Date();
+          if(birthDate > currentDate){
+            errors.birthDate = "Birthdate cannot be in the future";
+            isValid = false;
+          }
+        }
         if (!this.user[field]) {
-          errors[field] = true;
+          errors[field] = "Field cannot be empty";
           isValid = false;
         }
       }
@@ -40,7 +48,6 @@ export default {
       }
       return isValid;
     },
-
   }
 }
 </script>

@@ -4,12 +4,15 @@
       {{ label }}
     </label>
     <input
-        :class="error && 'error'"
+        :class="error !== '' && 'error'"
         :id="computedId"
         :type="type"
         :placeholder="placeholder"
         v-model="inputValue"
     >
+    <div class="h-6 flex items-center text-xs text-red-700">
+      {{error}}
+    </div>
   </div>
 </template>
 
@@ -34,8 +37,8 @@ export default {
       default: '',
     },
     error: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: "",
     },
   },
   computed: {

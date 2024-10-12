@@ -7,7 +7,7 @@
       <select
           id="grid-state"
           v-model="selectedValue"
-          class="block rounded-lg appearance-none w-full border border-gray-400 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-700"
+          class="block rounded-lg appearance-none w-full border border-gray-300 text-gray-700 py-3 px-4 "
       >
         <option
             v-for="option in options"
@@ -20,6 +20,7 @@
         <IconChevronDown />
       </div>
     </div>
+    <div class="h-6 flex items-center text-sm text-red-700" />
   </div>
 </template>
 
