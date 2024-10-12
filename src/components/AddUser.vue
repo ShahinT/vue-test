@@ -12,7 +12,7 @@
           id="grid-first-name"
           type="text"
           placeholder="Enter First Name"
-          v-model="firstName"
+          v-model="user.firstName"
         >
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -26,7 +26,7 @@
           id="grid-last-name"
           type="text"
           placeholder="Enter Last Name"
-          v-model="firstName"
+          v-model="user.lastName"
         >
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -39,7 +39,7 @@
           class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
           id="grid-date"
           type="date"
-          v-model="birthDate"
+          v-model="user.birthDate"
         >
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -53,36 +53,40 @@
           id="grid-quote"
           type="text"
           placeholder="Enter Quote"
-          v-model="quote"
+          v-model="user.quote"
         >
       </div>
       <drop-down
-        :options="professions"
-        :changeSelect="selectProfession"
+          :options="professions"
+          v-model="user.profession_id"
+          :changeSelect="professionSelectHandler"
       />
-      <drop-down />
+      <drop-down
+          :options="countries"
+          v-model="user.country_id"
+          :changeSelect="countrySelectHandler"
+      />
     </div>
-    <button-component
-      :on-click="addUser"
-      :button-text="'Save User'"
-    />
+    <button-component :on-click="addUser" :button-text="'Save User'" />
   </form>
 </template>
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import DropDown from './DropDown';
-import ButtonComponent from './Button';
+import DropDown from './elements/DropDown.vue';
+import ButtonComponent from './elements/Button.vue';
 
 export default {
   name: 'AddUser',
   data() {
     return {
       user: {
-        firstName: '',
-        lastName: '',
+        firstName: "",
+        lastName: "",
         birthDate: null,
-        quote: '',
+        quote: "",
+        profession_id: 1,
+        country_id: 1
       },
     };
   },
@@ -93,6 +97,7 @@ export default {
   computed: {
     ...mapState({
       professions: state => state.professionModule.professions,
+      countries: state => state.countryModule.countries,
     }),
   },
   methods: {
@@ -100,8 +105,14 @@ export default {
       setProfession: 'SET_PROFESSION',
     }),
     ...mapActions([
-      'addNewUsers',
+      'addNewUser',
     ]),
+    professionSelectHandler(professionId) {
+      this.user.profession_id = professionId;
+    },
+    countrySelectHandler(countryId) {
+      this.user.country_id = countryId;
+    },
     addUser() {
       this.addNewUser(this.user);
     }
