@@ -1,32 +1,52 @@
 <template>
-  <button
-      @click.prevent="onClick()"
-      type="button"
-      :class="`inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[${PRIMARY_COLOR_HOVER}]`"
-  >
-    {{buttonText}}
+  <button @click.prevent="onClick()" :type="type" :class="variant">
+    <slot />
   </button>
 </template>
 
 <script>
 
-import {PRIMARY_COLOR_HOVER} from "@/constants/constants";
-
 export default {
-  methods: {
-    PRIMARY_COLOR_HOVER() {
-      return PRIMARY_COLOR_HOVER
-    }
-  },
   props: {
     onClick: {
       type: Function,
       default: () => '',
     },
-    buttonText: {
+    type: {
       type: String,
-      default: 'Button',
+      default: 'button',
+    },
+    variant: {
+      type: String,
+      default: 'primary',
     },
   },
 }
 </script>
+
+<style scoped>
+.primary {
+  @apply flex items-center justify-center outline-none rounded-xl px-4 h-10  text-white shadow-sm;
+  background-color: var(--primary-color);
+}
+
+.primary:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.danger {
+  @apply flex items-center justify-center outline-none rounded-xl px-4 h-10  text-white shadow-sm;
+  background-color: var(--danger-color);
+}
+
+.danger:hover {
+  background-color: var(--danger-color-hover);
+}
+
+.icon {
+  @apply w-10 h-10 flex items-center justify-center cursor-pointer rounded-full
+}
+.icon:hover {
+  background-color: var(--icon-button-hover);
+}
+</style>
