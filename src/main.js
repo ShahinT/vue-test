@@ -5,7 +5,9 @@ import store from './store/store.js';
 import './assets/css/tailwind.css';
 
 Vue.config.productionTip = false
-
+window.loggg = function(data){
+  console.log(JSON.parse(JSON.stringify(data)))
+}
 new Vue({
   render: h => h(App),
   store,

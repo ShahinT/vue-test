@@ -1,22 +1,20 @@
 <template>
   <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
     <label
-      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-      v-text="label"
+        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        v-text="label"
     />
     <div class="relative">
       <select
-        id="grid-state"
-        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        @change="changeSelect($event.target.value)"
+          id="grid-state"
+          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          @change="changeSelect($event.target.value)"
       >
         <option
-          :value="options[0].value"
-          v-text="options[0].text"
-        />
-        <option
-          :value="options[1].value"
-          v-text="options[1].text"
+            v-for="option in options"
+            :value="option.value"
+            v-text="option.text"
+            :key="option.value"
         />
       </select>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
