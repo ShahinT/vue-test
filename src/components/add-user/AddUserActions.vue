@@ -28,6 +28,10 @@ export default {
       let isValid = true;
       let errors = {};
 
+      /**
+       *  Simple validation to check if text fields are not empty.
+       *  And ony one additinal check for the date to not be in the future.
+       * **/
       const requiredFields = ['firstName', 'lastName', 'birthDate', 'quote'];
       for (const field of requiredFields) {
         if(field === "birthDate"){

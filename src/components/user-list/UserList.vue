@@ -5,6 +5,7 @@
         Delete selected rows
       </Button>
     </div>
+
     <Table
         @updateSelectedRows="updateSelectedRowsHandler"
         @removeRow="removeUserHandler"
@@ -44,6 +45,10 @@ export default {
       professions: state => state.professionModule.professions,
       countries: state => state.countryModule.countries
     }),
+    /**
+     *  For better performance we are adding needed attributes within a computed, so they won get rendered each time.
+     *  THey are only re-rendered once their dependency, "user" is changed.
+     * **/
     updatedUsers() {
       return this.users.map(user => ({
        ...user,
