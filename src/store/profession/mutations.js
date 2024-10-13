@@ -1,7 +1,3 @@
-const mutations = {
-  SET_PROFESSION: (state, professionId) => {
-
-  },
-};
+const mutations = {};
 
 export default mutations;

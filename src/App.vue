@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import AddUser from './components/AddUser.vue'
-import UserList from './components/UserList.vue'
+import AddUser from './components/add-user/AddUser.vue'
+import UserList from './components/user-list/UserList.vue'
 
 export default {
   name: 'App',
