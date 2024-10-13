@@ -2,7 +2,6 @@
   <form class="max-w-6xl mx-auto my-10">
     <FieldsContainer>
       <AddUserTextFields
-          :formTextFields="formTextFields"
           :errors="errors"
           :user="user"
       />
@@ -18,7 +17,6 @@
 
 <script>
 import { mapState} from 'vuex';
-import {FORM_TEXT_FIELDS} from "@/constants/constants";
 import FieldsContainer from "@/components/add-user/FieldsContainer.vue";
 import AddUserActions from "@/components/add-user/AddUserActions.vue";
 import AddUserTextFields from "@/components/add-user/AddUserTextFields.vue";
@@ -42,7 +40,6 @@ export default {
         profession_id: 1,
         country_id: 1
       },
-      formTextFields: FORM_TEXT_FIELDS,
       errors: {},
     };
   },

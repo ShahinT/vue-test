@@ -12,9 +12,10 @@
         <option
             v-for="option in options"
             :value="option.value"
-            v-text="option.text"
             :key="option.value"
-        />
+        >
+          {{option.text}}
+        </option>
       </select>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <IconChevronDown />
@@ -48,6 +49,11 @@ export default {
     }
   },
   computed: {
+    /**
+     *  Since we need to emit back our value from our v-model we can not directly change the props, therefore
+     *  we need a computed property that gets the value from modelValue as prop and emits the value back to
+     *  paretn component by set.
+     * **/
     selectedValue: {
       get() {
         return this.modelValue;

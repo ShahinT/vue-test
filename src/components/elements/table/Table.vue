@@ -53,6 +53,9 @@ export default {
   },
   methods: {
     toggleSelection(id, event) {
+      /**
+       *  Selected rows will be emited back to the paretn component and waiting for the action.
+       * **/
       if (event.target.checked) {
         this.selectedRows.push(id);
       } else {

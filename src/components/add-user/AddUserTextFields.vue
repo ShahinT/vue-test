@@ -15,10 +15,16 @@
 
 <script>
 import TextField from "@/components/elements/TextField.vue";
+import {FORM_TEXT_FIELDS} from "@/constants/constants";
 
 export default {
   name: 'AddUserTextFields',
   components: {TextField},
-  props: ["formTextFields", "errors", "user"]
+  props: ["errors", "user"],
+  data() {
+    return {
+      formTextFields: FORM_TEXT_FIELDS,
+    };
+  }
 }
 </script>
